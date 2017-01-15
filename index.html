@@ -28,6 +28,24 @@
 <body ng-app="customerLog">
     <div ng-controller="CustomerLogController as vm">
         <h1>Customer Log</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="customer in vm.customers">
+                <tr>
+                    <td>{{customer.name.first_name}} {{customer.name.last_name}}</td>
+                    <td>{{customer.email}}</td>
+                    <td>{{customer.phone_number}}</td>
+                    <td>{{customer.address.street}}, {{customer.address.city}}, {{customer.address.state}} {{customer.address.zip}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 
