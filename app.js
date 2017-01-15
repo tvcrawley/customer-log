@@ -4,6 +4,7 @@ angular
 
 function CustomerLogFunction($firebaseArray) {
     var vm = this;
+    // this.customerEdit = false;
     var ref = firebase.database().ref().child("customers");
     this.customers = $firebaseArray(ref);
     this.newCustomer = {};
@@ -12,6 +13,12 @@ function CustomerLogFunction($firebaseArray) {
     this.addCustomer = function() {
         this.customers.$add(this.newCustomer)
         this.newCustomer = {};
+    }
+
+    // update customer info
+    this.update = function(customer) {
+        this.customers.$save(customer);
+        console.log(customer)
     }
 
     // delete customer

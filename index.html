@@ -35,14 +35,44 @@
                     <th>Email</th>
                     <th>Phone Number</th>
                     <th>Address</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody ng-repeat="customer in vm.customers">
                 <tr>
-                    <td>{{customer.name.first_name}} {{customer.name.last_name}}</td>
-                    <td>{{customer.email}}</td>
-                    <td>{{customer.phone_number}}</td>
-                    <td>{{customer.address.street}}, {{customer.address.city}}, {{customer.address.state}} {{customer.address.zip}}</td>
+
+                    <td>
+                        <p ng-hide="customerEdit">
+                            {{customer.name.first_name}} {{customer.name.last_name}}
+                        </p>
+                        <input type="text" ng-show="customerEdit" ng-model="customer.name.first_name" placeholder="{{customer.name.first_name}}">
+                        <input type="text" ng-show="customerEdit" ng-model="customer.name.last_name" placeholder="{{customer.name.last_name}}">
+                    </td>
+                    <td>
+                        <p ng-hide="customerEdit">{{customer.email}}</p>
+                        <input type="text" ng-show="customerEdit" ng-model="customer.email" placeholder="{{customer.email}}">
+                    </td>
+                    <td>
+                        <p ng-hide="customerEdit">{{customer.phone_number}}</p>
+                        <input type="text" ng-show="customerEdit" ng-model="customer.phone_number" placeholder="{{customer.phone_number}}">
+                    </td>
+
+                    <td>
+                        <p ng-hide="customerEdit">{{customer.address.street}}, {{customer.address.city}}, {{customer.address.state}} {{customer.address.zip}}</p>
+                        <input type="text" ng-show="customerEdit" ng-model="customer.address.street" placeholder="{{customer.address.street}}">
+                        <input type="text" ng-show="customerEdit" ng-model="customer.address.city" placeholder="{{customer.address.city}}">
+                        <input type="text" ng-show="customerEdit" ng-model="customer.address.state" placeholder="{{customer.address.state}}">
+                        <input type="text" ng-show="customerEdit" ng-model="customer.address.zip" placeholder="{{customer.address.zip}}">
+                    </td>
+
+                    <td ng-hide="customerEdit">
+                        <label> Edit  Customer<input type="checkbox" ng-model="customerEdit" ng-init="customerEdit"></label>
+                    </td>
+                    <td ng-show="customerEdit"><button ng-click="vm.update(customer); customerEdit=false">Save Changes</button></td>
+
+                    <!-- <td><button ng-click="vm.update(customer)" ng-model="customerEdit" ng-init="customerEdit=false">Edit  Customer</button></td> -->
+
                     <td><button ng-click="vm.delete(customer)">Delete Customer</button></td>
                 </tr>
             </tbody>
