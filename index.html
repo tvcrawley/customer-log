@@ -28,6 +28,32 @@
 <body ng-app="customerLog">
     <div ng-controller="CustomerLogController as vm">
         <h1>Customer Log</h1>
+
+        <h3 ng-hide="newCustomerForm">
+            <label> Add a Customer<input type="checkbox" ng-model="newCustomerForm" ng-init="newCustomerForm"></label>
+        </h3>
+
+        <form ng-submit="vm.addCustomer(); newCustomerForm=false" ng-show="newCustomerForm">
+            <label>First Name: </label>
+            <input type="text" ng-model="vm.newCustomer.name.first_name">
+            <label>Last Name</label>
+            <input type="text" ng-model="vm.newCustomer.name.last_name">
+            <label>Email</label>
+            <input type="text" ng-model="vm.newCustomer.email">
+            <label>Phone Number</label>
+            <input type="text" ng-model="vm.newCustomer.phone_number">
+            <label>Address</label>
+            <label>Street</label>
+            <input type="text" ng-model="vm.newCustomer.address.street">
+            <label>City</label>
+            <input type="text" ng-model="vm.newCustomer.address.city">
+            <label>State</label>
+            <input type="text" ng-model="vm.newCustomer.address.state">
+            <label>Zip</label>
+            <input type="text" ng-model="vm.newCustomer.address.zip">
+            <button type="submit">Add Customer</button>
+        </form>
+
         <table>
             <thead>
                 <tr>
@@ -49,10 +75,12 @@
                         <input type="text" ng-show="customerEdit" ng-model="customer.name.first_name" placeholder="{{customer.name.first_name}}">
                         <input type="text" ng-show="customerEdit" ng-model="customer.name.last_name" placeholder="{{customer.name.last_name}}">
                     </td>
+
                     <td>
                         <p ng-hide="customerEdit">{{customer.email}}</p>
                         <input type="text" ng-show="customerEdit" ng-model="customer.email" placeholder="{{customer.email}}">
                     </td>
+
                     <td>
                         <p ng-hide="customerEdit">{{customer.phone_number}}</p>
                         <input type="text" ng-show="customerEdit" ng-model="customer.phone_number" placeholder="{{customer.phone_number}}">
@@ -67,37 +95,21 @@
                     </td>
 
                     <td ng-hide="customerEdit">
-                        <label> Edit  Customer<input type="checkbox" ng-model="customerEdit" ng-init="customerEdit"></label>
+                        <input type="checkbox" ng-model="customerEdit" ng-init="customerEdit">
                     </td>
-                    <td ng-show="customerEdit"><button ng-click="vm.update(customer); customerEdit=false">Save Changes</button></td>
 
-                    <!-- <td><button ng-click="vm.update(customer)" ng-model="customerEdit" ng-init="customerEdit=false">Edit  Customer</button></td> -->
+                    <td ng-show="customerEdit">
+                        <button ng-click="vm.update(customer); customerEdit=false">Save</button>
+                    </td>
 
-                    <td><button ng-click="vm.delete(customer)">Delete Customer</button></td>
+                    <td>
+                        <button ng-click="vm.delete(customer)"></button>
+                    </td>
                 </tr>
             </tbody>
         </table>
 
-        <form ng-submit="vm.addCustomer()">
-            <label>First Name: </label>
-            <input type="text" ng-model="vm.newCustomer.name.first_name">
-            <label>Last Name</label>
-            <input type="text" ng-model="vm.newCustomer.name.last_name">
-            <label>Email</label>
-            <input type="text" ng-model="vm.newCustomer.email">
-            <label>Phone Number</label>
-            <input type="text" ng-model="vm.newCustomer.phone_number">
-            <label>Address</label>
-            <label>Street</label>
-            <input type="text" ng-model="vm.newCustomer.address.street">
-            <label>City</label>
-            <input type="text" ng-model="vm.newCustomer.address.city">
-            <label>State</label>
-            <input type="text" ng-model="vm.newCustomer.address.state">
-            <label>Zip</label>
-            <input type="text" ng-model="vm.newCustomer.address.zip">
-            <button type="submit">Add Customer</button>
-        </form>
+
     </div>
 </body>
 
