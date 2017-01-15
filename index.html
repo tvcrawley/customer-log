@@ -43,9 +43,11 @@
                     <td>{{customer.email}}</td>
                     <td>{{customer.phone_number}}</td>
                     <td>{{customer.address.street}}, {{customer.address.city}}, {{customer.address.state}} {{customer.address.zip}}</td>
+                    <td><button ng-click="vm.delete(customer)">Delete Customer</button></td>
                 </tr>
             </tbody>
         </table>
+
         <form ng-submit="vm.addCustomer()">
             <label>First Name: </label>
             <input type="text" ng-model="vm.newCustomer.name.first_name">

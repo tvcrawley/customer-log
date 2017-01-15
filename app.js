@@ -8,9 +8,14 @@ function CustomerLogFunction($firebaseArray) {
     this.customers = $firebaseArray(ref);
     this.newCustomer = {};
 
-    // add new customers to database
+    // add new customers
     this.addCustomer = function() {
         this.customers.$add(this.newCustomer)
         this.newCustomer = {};
+    }
+
+    // delete customer
+    this.delete = function(customer) {
+        this.customers.$remove(customer);
     }
 }
