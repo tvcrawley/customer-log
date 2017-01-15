@@ -1,0 +1,131 @@
+[{
+    "name": {
+        "first_name": "Joyce",
+        "last_name": "Fox"
+    },
+    "email": "jfox0@rakuten.co.jp",
+    "phone_number": "1-(414)802-5474",
+    "address": {
+        "street": "65573 Oxford Alley",
+        "city": "Milwaukee",
+        "state": "WI",
+        "zip": "53225"
+    }
+}, {
+    "name": {
+        "first_name": "Linda",
+        "last_name": "Lewis"
+    },
+    "email": "llewis1@google.cn",
+    "phone_number": "1-(405)229-4370",
+    "address": {
+        "street": "2516 Arizona Road",
+        "city": "Oklahoma City",
+        "state": "OK",
+        "zip": "73173"
+    }
+}, {
+    "name": {
+        "first_name": "Sharon",
+        "last_name": "Wagner"
+    },
+    "email": "swagner2@utexas.edu",
+    "phone_number": "1-(651)446-0314",
+    "address": {
+        "street": "9231 Hazelcrest Pass",
+        "city": "Minneapolis",
+        "state": "MN",
+        "zip": "55417"
+    }
+}, {
+    "name": {
+        "first_name": "Willie",
+        "last_name": "Franklin"
+    },
+    "email": "wfranklin3@usda.gov",
+    "phone_number": "1-(205)756-5445",
+    "address": {
+        "street": "613 Macpherson Crossing",
+        "city": "Birmingham",
+        "state": "AL",
+        "zip": "35254"
+    }
+}, {
+    "name": {
+        "first_name": "Tammy",
+        "last_name": "Ramos"
+    },
+    "email": "tramos4@hostgator.com",
+    "phone_number": "1-(213)443-3087",
+    "address": {
+        "street": "9354 1st Center",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90050"
+    }
+}, {
+    "name": {
+        "first_name": "Fred",
+        "last_name": "Rose"
+    },
+    "email": "frose5@intel.com",
+    "phone_number": "1-(626)799-1652",
+    "address": {
+        "street": "2 Lukken Terrace",
+        "city": "Alhambra",
+        "state": "CA",
+        "zip": "91841"
+    }
+}, {
+    "name": {
+        "first_name": "Donna",
+        "last_name": "Richards"
+    },
+    "email": "drichards6@scribd.com",
+    "phone_number": "1-(312)196-9955",
+    "address": {
+        "street": "89 Fieldstone Park",
+        "city": "Chicago",
+        "state": "IL",
+        "zip": "60669"
+    }
+}, {
+    "name": {
+        "first_name": "Bobby",
+        "last_name": "Fisher"
+    },
+    "email": "bfisher7@mtv.com",
+    "phone_number": "1-(215)625-0468",
+    "address": {
+        "street": "17769 Lindbergh Place",
+        "city": "Philadelphia",
+        "state": "PA",
+        "zip": "19131"
+    }
+}, {
+    "name": {
+        "first_name": "Ruby",
+        "last_name": "Banks"
+    },
+    "email": "rbanks8@ow.ly",
+    "phone_number": "1-(214)849-0667",
+    "address": {
+        "street": "19318 Bowman Park",
+        "city": "Dallas",
+        "state": "TX",
+        "zip": "75210"
+    }
+}, {
+    "name": {
+        "first_name": "Barbara",
+        "last_name": "Murphy"
+    },
+    "email": "bmurphy9@princeton.edu",
+    "phone_number": "1-(361)968-4662",
+    "address": {
+        "street": "3207 Colorado Avenue",
+        "city": "Corpus Christi",
+        "state": "TX",
+        "zip": "78415"
+    }
+}]
