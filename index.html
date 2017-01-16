@@ -3,8 +3,10 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Customer Log</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
@@ -26,113 +28,197 @@
 </head>
 
 <body ng-app="customerLog">
-    <div ng-controller="CustomerLogController as vm">
+    <div ng-controller="CustomerLogController as vm" class="container">
         <h1>Customer Log</h1>
 
-        <h3 ng-hide="newCustomerForm">
-            <label> Add a Customer<input type="checkbox" ng-model="newCustomerForm" ng-init="newCustomerForm"></label>
-        </h3>
+
+        <button ng-init="newCustomerForm" ng-model="newCustomerForm" ng-click="newCustomerForm=true" ng-hide="newCustomerForm" class="btn btn-default"> Add a Customer </button>
+
+
+        <!-- <h4 ng-hide="newCustomerForm">
+            <label> Add a Customer <br><input type="checkbox" ng-model="newCustomerForm" ng-init="newCustomerForm"></label>
+        </h4> -->
 
         <form name="customerForm" ng-submit="vm.addCustomer(); customerForm.$setPristine(); newCustomerForm=false" ng-show="newCustomerForm">
 
-            <label>First Name </label>
-            <input name="first_name" type="text" ng-model="vm.newCustomer.name.first_name" placeholder="First Name" required>
-            <p ng-show="customerForm.first_name.$error.required && customerForm.$dirty">Please enter customer's first name.</p>
+            <div class="form-group">
+                <label>First Name </label>
+                <input name="first_name" type="text" ng-model="vm.newCustomer.name.first_name" placeholder="First Name" required class="form-control" />
+            </div>
 
-            <label>Last Name</label>
-            <input name="last_name" type="text" ng-model="vm.newCustomer.name.last_name" placeholder="Last Name" required>
-            <p ng-show="customerForm.last_name.$error.required && customerForm.last_name.$dirty">Please enter customer's last name.</p>
+            <p ng-show="customerForm.first_name.$error.required && customerForm.$dirty" class="validate">
+                Please enter customer's first name.
+            </p>
 
-            <label>Email Address</label>
-            <input name="email" type="email" ng-model="vm.newCustomer.email" placeholder="Email Address" required ng-pattern="vm.emailPattern">
-            <p ng-show="customerForm.email.$error.required && customerForm.email.$dirty">Please enter an email.</p>
-            <p ng-show="customerForm.email.$error.pattern && customerForm.email.$dirty">Email not valid.</p>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input name="last_name" type="text" ng-model="vm.newCustomer.name.last_name" placeholder="Last Name" required class="form-control" />
+            </div>
 
-            <label>Phone Number (digits only)</label>
-            <input name="phone_number" type="number" ng-model="vm.newCustomer.phone_number" placeholder="Phone Number" required ng-minlength="10" ng-maxlength="10">
-            <p ng-show="((customerForm.phone_number.$error.required || customerForm.phone_number.$error.number) && customerForm.phone_number.$dirty)">Please enter a phone number.</p>
-            <p ng-show="((customerForm.phone_number.$error.minlength || customerForm.phone_number.$error.maxlength) && customerForm.phone_number.$dirty)">Phone number should be 10 digits long.</p>
+            <p ng-show="customerForm.last_name.$error.required && customerForm.last_name.$dirty" class="validate">
+                Please enter customer's last name.
+            </p>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input name="email" type="email" ng-model="vm.newCustomer.email" placeholder="Email Address" required ng-pattern="vm.emailPattern" class="form-control">
+            </div>
+
+            <p ng-show="customerForm.email.$error.required && customerForm.email.$dirty" class="validate">
+                Please enter an email.
+            </p>
+            <p ng-show="customerForm.email.$error.pattern && customerForm.email.$dirty" class="validate">
+                Email not valid.
+            </p>
+
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input name="phone_number" type="number" ng-model="vm.newCustomer.phone_number" placeholder="Phone Number" required ng-minlength="10" ng-maxlength="10" class="form-control">
+            </div>
+
+            <p ng-show="((customerForm.phone_number.$error.required || customerForm.phone_number.$error.number) && customerForm.phone_number.$dirty)" class="validate">
+                Please enter a phone number.
+            </p>
+            <p ng-show="((customerForm.phone_number.$error.minlength || customerForm.phone_number.$error.maxlength) && customerForm.phone_number.$dirty)" class="validate">
+                Phone number should be 10 digits long.
+            </p>
 
             <label>Address</label>
 
-            <label>Street</label>
-            <input name="street" type="text" ng-model="vm.newCustomer.address.street" placeholder="Street" required>
-            <p ng-show="customerForm.street.$error.required && customerForm.street.$dirty">Please enter street address.</p>
+            <div class="form-group">
+                <label>Street</label>
+                <input name="street" type="text" ng-model="vm.newCustomer.address.street" placeholder="Street" required class="form-control">
+            </div>
 
-            <label>City</label>
-            <input name="city" type="text" ng-model="vm.newCustomer.address.city" placeholder="City" required>
-            <p ng-show="customerForm.city.$error.required && customerForm.city.$dirty">Please enter city.</p>
+            <p ng-show="customerForm.street.$error.required && customerForm.street.$dirty" class="validate">
+                Please enter street address.
+            </p>
 
-            <label>State</label>
-            <input name="state" type="text" ng-model="vm.newCustomer.address.state" placeholder="State" required ng-minlength="2" ng-maxlength="2">
-            <p ng-show="((customerForm.state.$error.required || customerForm.state.$error.number) && customerForm.state.$dirty)">Please enter a state.</p>
-            <p ng-show="((customerForm.state.$error.minlength || customerForm.state.$error.maxlength) && customerForm.state.$dirty)">State should be in abbreviated form.</p>
+            <div class="form-group">
+                <label>City</label>
+                <input name="city" type="text" ng-model="vm.newCustomer.address.city" placeholder="City" required class="form-control">
+            </div>
 
-            <label>Zipcode</label>
-            <input name="zip" type="number" ng-model="vm.newCustomer.address.zip" placeholder="Zipcode" required ng-minlength="5" ng-maxlength="5">
-            <p ng-show="((customerForm.zip.$error.required || customerForm.zip.$error.number) && customerForm.zip.$dirty)">Please enter a zipcode.</p>
-            <p ng-show="((customerForm.zip.$error.minlength || customerForm.zip.$error.maxlength) && customerForm.zip.$dirty)">Zip code should be 5 digits long.</p>
+            <p ng-show="customerForm.city.$error.required && customerForm.city.$dirty" class="validate">
+                Please enter city.
+            </p>
 
-            <button type="submit">Add Customer</button>
-            <button type="reset" ng-click="newCustomerForm=false">Cancel</button>
+            <div class="form-group">
+                <label>State</label>
+                <input name="state" type="text" ng-model="vm.newCustomer.address.state" placeholder="State" required ng-minlength="2" ng-maxlength="2" class="form-control">
+            </div>
+
+            <p ng-show="((customerForm.state.$error.required || customerForm.state.$error.number) && customerForm.state.$dirty)" class="validate">
+                Please enter a state.
+            </p>
+            <p ng-show="((customerForm.state.$error.minlength || customerForm.state.$error.maxlength) && customerForm.state.$dirty)" class="validate">
+                State should be in abbreviated form.
+            </p>
+
+            <div class="form-group">
+                <label>Zipcode</label>
+                <input name="zip" type="number" ng-model="vm.newCustomer.address.zip" placeholder="Zipcode" required ng-minlength="5" ng-maxlength="5" class="form-control">
+            </div>
+
+            <p ng-show="((customerForm.zip.$error.required || customerForm.zip.$error.number) && customerForm.zip.$dirty)" class="validate">
+                Please enter a zipcode.
+            </p>
+            <p ng-show="((customerForm.zip.$error.minlength || customerForm.zip.$error.maxlength) && customerForm.zip.$dirty)" class="validate">
+                Zipcode should be 5 digits long.
+            </p>
+
+            <button type="submit" class="btn btn-primary">Add Customer</button>
+            <button type="reset" ng-click="newCustomerForm=false" class="btn btn-default">Cancel</button>
         </form>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Address</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody ng-repeat="customer in vm.customers">
-                <tr>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Address</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="customer in vm.customers">
+                    <tr>
 
-                    <td>
-                        <p ng-hide="customerEdit">
-                            {{customer.name.first_name}} {{customer.name.last_name}}
-                        </p>
-                        <input type="text" ng-show="customerEdit" ng-model="customer.name.first_name" placeholder="{{customer.name.first_name}}">
-                        <input type="text" ng-show="customerEdit" ng-model="customer.name.last_name" placeholder="{{customer.name.last_name}}">
-                    </td>
+                        <td>
+                            <p ng-hide="customerEdit">
+                                {{customer.name.first_name}} {{customer.name.last_name}}
+                            </p>
 
-                    <td>
-                        <p ng-hide="customerEdit">{{customer.email}}</p>
-                        <input type="text" ng-show="customerEdit" ng-model="customer.email" placeholder="{{customer.email}}">
-                    </td>
+                            <div class="form-group">
+                                <input type="text" ng-show="customerEdit" ng-model="customer.name.first_name" placeholder="{{customer.name.first_name}}" class="form-control" />
+                                <input type="text" ng-show="customerEdit" ng-model="customer.name.last_name" placeholder="{{customer.name.last_name}}" class="form-control" />
+                            </div>
 
-                    <td>
-                        <p ng-hide="customerEdit">{{customer.phone_number}}</p>
-                        <input type="text" ng-show="customerEdit" ng-model="customer.phone_number" placeholder="{{customer.phone_number}}">
-                    </td>
+                        </td>
 
-                    <td>
-                        <p ng-hide="customerEdit">{{customer.address.street}}, {{customer.address.city}}, {{customer.address.state}} {{customer.address.zip}}</p>
-                        <input type="text" ng-show="customerEdit" ng-model="customer.address.street" placeholder="{{customer.address.street}}">
-                        <input type="text" ng-show="customerEdit" ng-model="customer.address.city" placeholder="{{customer.address.city}}">
-                        <input type="text" ng-show="customerEdit" ng-model="customer.address.state" placeholder="{{customer.address.state}}">
-                        <input type="text" ng-show="customerEdit" ng-model="customer.address.zip" placeholder="{{customer.address.zip}}">
-                    </td>
+                        <td>
+                            <p ng-hide="customerEdit">{{customer.email}}</p>
 
-                    <td ng-hide="customerEdit">
+                            <div class="form-group">
+                                <input type="text" ng-show="customerEdit" ng-model="customer.email" placeholder="{{customer.email}}" class="form-control" />
+                            </div>
+
+                        </td>
+
+                        <td>
+                            <p ng-hide="customerEdit">{{customer.phone_number}}</p>
+
+                            <div class="form-group">
+                                <input type="text" ng-show="customerEdit" ng-model="customer.phone_number" placeholder="{{customer.phone_number}}" class="form-control" />
+                            </div>
+
+                        </td>
+
+                        <td>
+                            <address ng-hide="customerEdit">
+                              {{customer.address.street}} <br> {{customer.address.city}}, {{customer.address.state}} {{customer.address.zip}}
+                            </address>
+
+                            <div class="form-group">
+                                <input type="text" ng-show="customerEdit" ng-model="customer.address.street" placeholder="{{customer.address.street}}" class="form-control" />
+                                <input type="text" ng-show="customerEdit" ng-model="customer.address.city" placeholder="{{customer.address.city}}" class="form-control" />
+                                <input type="text" ng-show="customerEdit" ng-model="customer.address.state" placeholder="{{customer.address.state}}" class="form-control" />
+                                <input type="text" ng-show="customerEdit" ng-model="customer.address.zip" placeholder="{{customer.address.zip}}" class="form-control" />
+                            </div>
+
+                        </td>
+
+                        <!-- <td ng-hide="customerEdit">
                         <input type="checkbox" ng-model="customerEdit" ng-init="customerEdit">
-                    </td>
+                    </td> -->
+                        <td ng-hide="customerEdit">
+                            <button ng-init="customerEdit" ng-model="customerEdit" ng-click="customerEdit=true" class="btn btn-primary">
+                          <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        </td>
 
-                    <td ng-show="customerEdit">
-                        <button ng-click="vm.update(customer); customerEdit=false">Save</button>
-                    </td>
+                        <td ng-show="customerEdit">
+                            <button ng-click="vm.update(customer); customerEdit=false" class="btn btn-success">
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
+                        </button>
+                        </td>
 
-                    <td>
-                        <button ng-click="vm.delete(customer)"></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-
+                        <td>
+                            <button ng-click="vm.delete(customer)" class="btn btn-danger">
+                          <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container footer">
+        <a href="http://tvlangley.github.io/">
+                ©2017 Tonia Langley. All rights reserved.
+        </a>
     </div>
 </body>
 

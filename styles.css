@@ -1,3 +1,77 @@
 body {
+    background-color: #e8e1ed;
+    color: #a68e6e;
     text-align: center;
+}
+
+form, .form-group, .validate {
+    width: 75%;
+    margin: 0 auto;
+    padding: 1%;
+}
+
+form, table {
+    margin-top: 3%;
+}
+
+label, th {
+    font-size: 1.3em;
+}
+
+th, .form-control {
+    text-align: center;
+}
+
+.form-control {
+    color: #a68e6e;
+}
+
+p, address, a {
+    font-size: 1.2em;
+}
+
+h1, th, label {
+    color: #9a68be;
+}
+
+.table>tbody>tr>td {
+    vertical-align: middle;
+}
+
+address {
+    margin: 0;
+}
+
+a {
+    color: #f5f5f5;
+}
+
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color: #a68e6e;
+}
+
+.container {
+    width: 85%;
+}
+
+.btn-default {
+    background-color: #f5f5f5;
+    color: #9a68be;
+}
+
+.btn-default:hover {
+    background-color: #9a68be;
+    color: #f5f5f5;
+}
+
+.validate {
+    color: #ff0000;
+}
+
+.footer {
+    background-color: #9a68be;
+    color: f5f5f5;
+    padding: 2%;
 }
