@@ -33,25 +33,48 @@
             <label> Add a Customer<input type="checkbox" ng-model="newCustomerForm" ng-init="newCustomerForm"></label>
         </h3>
 
-        <form ng-submit="vm.addCustomer(); newCustomerForm=false" ng-show="newCustomerForm">
-            <label>First Name: </label>
-            <input type="text" ng-model="vm.newCustomer.name.first_name">
+        <form name="customerForm" ng-submit="vm.addCustomer(); customerForm.$setPristine(); newCustomerForm=false" ng-show="newCustomerForm">
+
+            <label>First Name </label>
+            <input name="first_name" type="text" ng-model="vm.newCustomer.name.first_name" placeholder="First Name" required>
+            <p ng-show="customerForm.first_name.$error.required && customerForm.$dirty">Please enter customer's first name.</p>
+
             <label>Last Name</label>
-            <input type="text" ng-model="vm.newCustomer.name.last_name">
-            <label>Email</label>
-            <input type="text" ng-model="vm.newCustomer.email">
-            <label>Phone Number</label>
-            <input type="text" ng-model="vm.newCustomer.phone_number">
+            <input name="last_name" type="text" ng-model="vm.newCustomer.name.last_name" placeholder="Last Name" required>
+            <p ng-show="customerForm.last_name.$error.required && customerForm.last_name.$dirty">Please enter customer's last name.</p>
+
+            <label>Email Address</label>
+            <input name="email" type="email" ng-model="vm.newCustomer.email" placeholder="Email Address" required ng-pattern="vm.emailPattern">
+            <p ng-show="customerForm.email.$error.required && customerForm.email.$dirty">Please enter an email.</p>
+            <p ng-show="customerForm.email.$error.pattern && customerForm.email.$dirty">Email not valid.</p>
+
+            <label>Phone Number (digits only)</label>
+            <input name="phone_number" type="number" ng-model="vm.newCustomer.phone_number" placeholder="Phone Number" required ng-minlength="10" ng-maxlength="10">
+            <p ng-show="((customerForm.phone_number.$error.required || customerForm.phone_number.$error.number) && customerForm.phone_number.$dirty)">Please enter a phone number.</p>
+            <p ng-show="((customerForm.phone_number.$error.minlength || customerForm.phone_number.$error.maxlength) && customerForm.phone_number.$dirty)">Phone number should be 10 digits long.</p>
+
             <label>Address</label>
+
             <label>Street</label>
-            <input type="text" ng-model="vm.newCustomer.address.street">
+            <input name="street" type="text" ng-model="vm.newCustomer.address.street" placeholder="Street" required>
+            <p ng-show="customerForm.street.$error.required && customerForm.street.$dirty">Please enter street address.</p>
+
             <label>City</label>
-            <input type="text" ng-model="vm.newCustomer.address.city">
+            <input name="city" type="text" ng-model="vm.newCustomer.address.city" placeholder="City" required>
+            <p ng-show="customerForm.city.$error.required && customerForm.city.$dirty">Please enter city.</p>
+
             <label>State</label>
-            <input type="text" ng-model="vm.newCustomer.address.state">
-            <label>Zip</label>
-            <input type="text" ng-model="vm.newCustomer.address.zip">
+            <input name="state" type="text" ng-model="vm.newCustomer.address.state" placeholder="State" required ng-minlength="2" ng-maxlength="2">
+            <p ng-show="((customerForm.state.$error.required || customerForm.state.$error.number) && customerForm.state.$dirty)">Please enter a state.</p>
+            <p ng-show="((customerForm.state.$error.minlength || customerForm.state.$error.maxlength) && customerForm.state.$dirty)">State should be in abbreviated form.</p>
+
+            <label>Zipcode</label>
+            <input name="zip" type="number" ng-model="vm.newCustomer.address.zip" placeholder="Zipcode" required ng-minlength="5" ng-maxlength="5">
+            <p ng-show="((customerForm.zip.$error.required || customerForm.zip.$error.number) && customerForm.zip.$dirty)">Please enter a zipcode.</p>
+            <p ng-show="((customerForm.zip.$error.minlength || customerForm.zip.$error.maxlength) && customerForm.zip.$dirty)">Zip code should be 5 digits long.</p>
+
             <button type="submit">Add Customer</button>
+            <button type="reset" ng-click="newCustomerForm=false">Cancel</button>
         </form>
 
         <table>

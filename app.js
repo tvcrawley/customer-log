@@ -4,10 +4,10 @@ angular
 
 function CustomerLogFunction($firebaseArray) {
     var vm = this;
-    // this.customerEdit = false;
     var ref = firebase.database().ref().child("customers");
     this.customers = $firebaseArray(ref);
     this.newCustomer = {};
+    this.emailPattern = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
     // add new customers
     this.addCustomer = function() {
@@ -25,4 +25,5 @@ function CustomerLogFunction($firebaseArray) {
     this.delete = function(customer) {
         this.customers.$remove(customer);
     }
+
 }
