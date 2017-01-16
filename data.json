@@ -4,12 +4,12 @@
         "last_name": "Fox"
     },
     "email": "jfox0@rakuten.co.jp",
-    "phone_number": "4148025474",
+    "phone_number": 4148025474,
     "address": {
         "street": "65573 Oxford Alley",
         "city": "Milwaukee",
         "state": "WI",
-        "zip": "53225"
+        "zip": 53225
     }
 }, {
     "name": {
@@ -17,12 +17,12 @@
         "last_name": "Lewis"
     },
     "email": "llewis1@google.cn",
-    "phone_number": "4052294370",
+    "phone_number": 4052294370,
     "address": {
         "street": "2516 Arizona Road",
         "city": "Oklahoma City",
         "state": "OK",
-        "zip": "73173"
+        "zip": 73173
     }
 }, {
     "name": {
@@ -30,12 +30,12 @@
         "last_name": "Wagner"
     },
     "email": "swagner2@utexas.edu",
-    "phone_number": "6514460314",
+    "phone_number": 6514460314,
     "address": {
         "street": "9231 Hazelcrest Pass",
         "city": "Minneapolis",
         "state": "MN",
-        "zip": "55417"
+        "zip": 55417
     }
 }, {
     "name": {
@@ -43,12 +43,12 @@
         "last_name": "Franklin"
     },
     "email": "wfranklin3@usda.gov",
-    "phone_number": "2057565445",
+    "phone_number": 2057565445,
     "address": {
         "street": "613 Macpherson Crossing",
         "city": "Birmingham",
         "state": "AL",
-        "zip": "35254"
+        "zip": 35254
     }
 }, {
     "name": {
@@ -56,12 +56,12 @@
         "last_name": "Ramos"
     },
     "email": "tramos4@hostgator.com",
-    "phone_number": "2134433087",
+    "phone_number": 2134433087,
     "address": {
         "street": "9354 1st Center",
         "city": "Los Angeles",
         "state": "CA",
-        "zip": "90050"
+        "zip": 90050
     }
 }, {
     "name": {
@@ -69,12 +69,12 @@
         "last_name": "Rose"
     },
     "email": "frose5@intel.com",
-    "phone_number": "6267991652",
+    "phone_number": 6267991652,
     "address": {
         "street": "2 Lukken Terrace",
         "city": "Alhambra",
         "state": "CA",
-        "zip": "91841"
+        "zip": 91841
     }
 }, {
     "name": {
@@ -82,12 +82,12 @@
         "last_name": "Richards"
     },
     "email": "drichards6@scribd.com",
-    "phone_number": "3121969955",
+    "phone_number": 3121969955,
     "address": {
         "street": "89 Fieldstone Park",
         "city": "Chicago",
         "state": "IL",
-        "zip": "60669"
+        "zip": 60669
     }
 }, {
     "name": {
@@ -95,12 +95,12 @@
         "last_name": "Fisher"
     },
     "email": "bfisher7@mtv.com",
-    "phone_number": "2156250468",
+    "phone_number": 2156250468,
     "address": {
         "street": "17769 Lindbergh Place",
         "city": "Philadelphia",
         "state": "PA",
-        "zip": "19131"
+        "zip": 19131
     }
 }, {
     "name": {
@@ -108,12 +108,12 @@
         "last_name": "Banks"
     },
     "email": "rbanks8@ow.ly",
-    "phone_number": "2148490667",
+    "phone_number": 2148490667,
     "address": {
         "street": "19318 Bowman Park",
         "city": "Dallas",
         "state": "TX",
-        "zip": "75210"
+        "zip": 75210
     }
 }, {
     "name": {
@@ -121,11 +121,11 @@
         "last_name": "Murphy"
     },
     "email": "bmurphy9@princeton.edu",
-    "phone_number": "3619684662",
+    "phone_number": 3619684662,
     "address": {
         "street": "3207 Colorado Avenue",
         "city": "Corpus Christi",
         "state": "TX",
-        "zip": "78415"
+        "zip": 78415
     }
 }]
