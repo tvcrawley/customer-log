@@ -31,39 +31,41 @@
     <div ng-controller="CustomerLogController as vm" class="container">
         <h1>Customer Log</h1>
 
-
+        <!-- add new customer button -->
         <button ng-init="newCustomerForm" ng-model="newCustomerForm" ng-click="newCustomerForm=true" ng-hide="newCustomerForm" class="btn btn-default"> Add a Customer </button>
 
-
-        <!-- <h4 ng-hide="newCustomerForm">
-            <label> Add a Customer <br><input type="checkbox" ng-model="newCustomerForm" ng-init="newCustomerForm"></label>
-        </h4> -->
-
+        <!-- new customer form -->
         <form name="customerForm" ng-submit="vm.addCustomer(); customerForm.$setPristine(); newCustomerForm=false" ng-show="newCustomerForm">
 
+            <!-- first name input -->
             <div class="form-group">
                 <label>First Name </label>
                 <input name="first_name" type="text" ng-model="vm.newCustomer.name.first_name" placeholder="First Name" required class="form-control" />
             </div>
 
+            <!-- first name validation -->
             <p ng-show="customerForm.first_name.$error.required && customerForm.$dirty" class="validate">
                 Please enter customer's first name.
             </p>
 
+            <!-- last name input -->
             <div class="form-group">
                 <label>Last Name</label>
                 <input name="last_name" type="text" ng-model="vm.newCustomer.name.last_name" placeholder="Last Name" required class="form-control" />
             </div>
 
+            <!-- last name validation -->
             <p ng-show="customerForm.last_name.$error.required && customerForm.last_name.$dirty" class="validate">
                 Please enter customer's last name.
             </p>
 
+            <!-- email input -->
             <div class="form-group">
                 <label>Email Address</label>
                 <input name="email" type="email" ng-model="vm.newCustomer.email" placeholder="Email Address" required ng-pattern="vm.emailPattern" class="form-control">
             </div>
 
+            <!-- email validation -->
             <p ng-show="customerForm.email.$error.required && customerForm.email.$dirty" class="validate">
                 Please enter an email.
             </p>
@@ -71,11 +73,13 @@
                 Email not valid.
             </p>
 
+            <!-- phone number input -->
             <div class="form-group">
                 <label>Phone Number</label>
                 <input name="phone_number" type="number" ng-model="vm.newCustomer.phone_number" placeholder="Phone Number" required ng-minlength="10" ng-maxlength="10" class="form-control">
             </div>
 
+            <!-- phone number validation -->
             <p ng-show="((customerForm.phone_number.$error.required || customerForm.phone_number.$error.number) && customerForm.phone_number.$dirty)" class="validate">
                 Please enter a phone number.
             </p>
@@ -85,29 +89,35 @@
 
             <label>Address</label>
 
+            <!-- street address input -->
             <div class="form-group">
                 <label>Street</label>
                 <input name="street" type="text" ng-model="vm.newCustomer.address.street" placeholder="Street" required class="form-control">
             </div>
 
+            <!-- street address validation -->
             <p ng-show="customerForm.street.$error.required && customerForm.street.$dirty" class="validate">
                 Please enter street address.
             </p>
 
+            <!-- city input -->
             <div class="form-group">
                 <label>City</label>
                 <input name="city" type="text" ng-model="vm.newCustomer.address.city" placeholder="City" required class="form-control">
             </div>
 
+            <!-- city validation -->
             <p ng-show="customerForm.city.$error.required && customerForm.city.$dirty" class="validate">
                 Please enter city.
             </p>
 
+            <!-- state input -->
             <div class="form-group">
                 <label>State</label>
                 <input name="state" type="text" ng-model="vm.newCustomer.address.state" placeholder="State" required ng-minlength="2" ng-maxlength="2" class="form-control">
             </div>
 
+            <!-- state validation -->
             <p ng-show="((customerForm.state.$error.required || customerForm.state.$error.number) && customerForm.state.$dirty)" class="validate">
                 Please enter a state.
             </p>
@@ -115,11 +125,13 @@
                 State should be in abbreviated form.
             </p>
 
+            <!-- zipcode input -->
             <div class="form-group">
                 <label>Zipcode</label>
                 <input name="zip" type="number" ng-model="vm.newCustomer.address.zip" placeholder="Zipcode" required ng-minlength="5" ng-maxlength="5" class="form-control">
             </div>
 
+            <!-- zipcode validation -->
             <p ng-show="((customerForm.zip.$error.required || customerForm.zip.$error.number) && customerForm.zip.$dirty)" class="validate">
                 Please enter a zipcode.
             </p>
@@ -127,12 +139,14 @@
                 Zipcode should be 5 digits long.
             </p>
 
+            <!-- submit form button -->
             <button type="submit" class="btn btn-primary">Add Customer</button>
             <button type="reset" ng-click="newCustomerForm=false" class="btn btn-default">Cancel</button>
         </form>
 
         <div class="table-responsive">
             <table class="table table-hover">
+                <!-- table headings -->
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -146,6 +160,7 @@
                 <tbody ng-repeat="customer in vm.customers">
                     <tr>
 
+                        <!-- customer first name & last name -->
                         <td>
                             <p ng-hide="customerEdit">
                                 {{customer.name.first_name}} {{customer.name.last_name}}
@@ -155,27 +170,27 @@
                                 <input type="text" ng-show="customerEdit" ng-model="customer.name.first_name" placeholder="{{customer.name.first_name}}" class="form-control" />
                                 <input type="text" ng-show="customerEdit" ng-model="customer.name.last_name" placeholder="{{customer.name.last_name}}" class="form-control" />
                             </div>
-
                         </td>
 
+                        <!-- customer email -->
                         <td>
                             <p ng-hide="customerEdit">{{customer.email}}</p>
 
                             <div class="form-group">
                                 <input type="text" ng-show="customerEdit" ng-model="customer.email" placeholder="{{customer.email}}" class="form-control" />
                             </div>
-
                         </td>
 
+                        <!-- customer phone number -->
                         <td>
                             <p ng-hide="customerEdit">{{customer.phone_number}}</p>
 
                             <div class="form-group">
                                 <input type="text" ng-show="customerEdit" ng-model="customer.phone_number" placeholder="{{customer.phone_number}}" class="form-control" />
                             </div>
-
                         </td>
 
+                        <!-- customer street address -->
                         <td>
                             <address ng-hide="customerEdit">
                               {{customer.address.street}} <br> {{customer.address.city}}, {{customer.address.state}} {{customer.address.zip}}
@@ -187,24 +202,23 @@
                                 <input type="text" ng-show="customerEdit" ng-model="customer.address.state" placeholder="{{customer.address.state}}" class="form-control" />
                                 <input type="text" ng-show="customerEdit" ng-model="customer.address.zip" placeholder="{{customer.address.zip}}" class="form-control" />
                             </div>
-
                         </td>
 
-                        <!-- <td ng-hide="customerEdit">
-                        <input type="checkbox" ng-model="customerEdit" ng-init="customerEdit">
-                    </td> -->
+                        <!-- edit customer button -->
                         <td ng-hide="customerEdit">
                             <button ng-init="customerEdit" ng-model="customerEdit" ng-click="customerEdit=true" class="btn btn-primary">
                           <span class="glyphicon glyphicon-pencil"></span>
                         </button>
                         </td>
 
+                        <!-- save customer button -->
                         <td ng-show="customerEdit">
                             <button ng-click="vm.update(customer); customerEdit=false" class="btn btn-success">
                           <span class="glyphicon glyphicon-floppy-disk"></span>
                         </button>
                         </td>
 
+                        <!-- delete customer button -->
                         <td>
                             <button ng-click="vm.delete(customer)" class="btn btn-danger">
                           <span class="glyphicon glyphicon-remove"></span>
